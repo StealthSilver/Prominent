@@ -19,4 +19,9 @@ DEPLOYMENT : AWS
 
 ---------------------------------------------------------------------------
 
-2. creating the git branches
+2. creating the git branches 
+
+- git init 
+- git add .
+- git commit -m "initial setup"
+- git checkout -b frontend-structure
