@@ -1,0 +1,8 @@
+PROMINANT - Stock Trading Platform 
+
+FRAMEWORKS
+
+FRONTEND : React + CSS + Bootstrap 
+BACKEND : Node + Express + zod + jest
+DATABASE : Mongo
+DEPLOYMENT : AWS
