@@ -25,3 +25,14 @@ DEPLOYMENT : AWS
 - git add .
 - git commit -m "initial setup"
 - git checkout -b frontend-structure
+
+---------------------------------------------------------------------------
+
+3. structuring components 
+
+- create a page folder 
+- create seperate folders for all the pages 
+- indentify the reusable components and make pages for them in components folder 
+- identify ohter components on the page and make pages for them in their respective folders 
+
+---------------------------------------------------------------------------
