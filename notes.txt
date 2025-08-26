@@ -6,3 +6,15 @@ FRONTEND : React + CSS + Bootstrap
 BACKEND : Node + Express + zod + jest
 DATABASE : Mongo
 DEPLOYMENT : AWS
+
+---------------------------------------------------------------------------
+
+1. FRONTEND SETUP
+
+- use the npm create vite and name the project frontend 
+- remove hte boilerplate 
+- create manifest.json for caching 
+- robots.tsx for SEO
+- delete all the style files
+
+---------------------------------------------------------------------------
