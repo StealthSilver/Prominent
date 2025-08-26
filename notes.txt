@@ -18,3 +18,5 @@ DEPLOYMENT : AWS
 - delete all the style files
 
 ---------------------------------------------------------------------------
+
+2. creating the git branches
