@@ -41,3 +41,8 @@ DEPLOYMENT : AWS
 
 ---------------------------------------------------------------------------
 
+4. creating the home component 
+
+- include the bootstrap via npm for styling 
+- include lucide-react for icons
+- add all the images on the assets folder
