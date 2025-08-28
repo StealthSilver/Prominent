@@ -49,5 +49,5 @@ DEPLOYMENT : AWS
 
 ---------------------------------------------------------------------------
 
-5. creating the Navbar 
-- use the bootstrap navbar
+5. creating the Navbar and the footer
+- 
