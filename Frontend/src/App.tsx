@@ -1,7 +1,12 @@
+import HomePage from "./pages/home/HomePage";
+import "./App.css";
+
 function App() {
   return (
     <>
-      <div>Hello</div>
+      <div>
+        <HomePage />
+      </div>
     </>
   );
 }

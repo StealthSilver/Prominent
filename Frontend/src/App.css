@@ -1,0 +1,12 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.custom-hover:hover {
+  background-color: black !important;
+  border-color: black !important;
+}
+
+.nav-link {
+  margin-left: 40px;
+}

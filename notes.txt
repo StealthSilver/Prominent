@@ -22,6 +22,10 @@ DEPLOYMENT : AWS
 2. creating the git branches 
 
 - git init 
+- git remote add origin https://github.com/USERNAME/REPO_NAME.git
+- git remote -v
+- git branch -M main
+- git push -u origin main // everything until now will be pushed to main branch
 - git add .
 - git commit -m "initial setup"
 - git checkout -b frontend-structure
@@ -36,3 +40,14 @@ DEPLOYMENT : AWS
 - identify ohter components on the page and make pages for them in their respective folders 
 
 ---------------------------------------------------------------------------
+
+4. creating the home component 
+
+- include the bootstrap via npm for styling 
+- include lucide-react for icons
+- add all the images on the assets folder
+
+---------------------------------------------------------------------------
+
+5. creating the Navbar 
+- use the bootstrap navbar
