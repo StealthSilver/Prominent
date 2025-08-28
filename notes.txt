@@ -46,3 +46,8 @@ DEPLOYMENT : AWS
 - include the bootstrap via npm for styling 
 - include lucide-react for icons
 - add all the images on the assets folder
+
+---------------------------------------------------------------------------
+
+5. creating the Navbar 
+- use the bootstrap navbar
