@@ -1,6 +1,6 @@
 export default function HeroSupport() {
   return (
-    <section className="container-fluid" id="supportHero">
+    <section className="container" id="supportHero">
       <div className="p-5 " id="supportWrapper">
         <h4>Support Portal</h4>
         <a href="">Track Tickets</a>
