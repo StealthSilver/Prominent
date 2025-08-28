@@ -12,7 +12,12 @@ export default function Signup() {
         investors and traders
       </p>
 
-      <Button as="a" variant="primary" size="lg" className="mt-4 custom-hover">
+      <div className="container mt-5 mb-3">
+        <h5 className="mb-4">Enter mobile numebr to register</h5>
+        <input type="text" placeholder="+91 - XXXXXXXXXXX" className="p-2" />
+      </div>
+
+      <Button as="a" variant="primary" size="lg" className="mt-2 custom-hover">
         Sign up for free
       </Button>
     </div>
