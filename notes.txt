@@ -49,5 +49,12 @@ DEPLOYMENT : AWS
 
 ---------------------------------------------------------------------------
 
-5. creating the Navbar and the footer
+5. creating the Navbar and the footer 
+
+- use the bootstrap boilerplate for navbar anf footer
+
+---------------------------------------------------------------------------
+
+6. setting up the router 
+
 - 
