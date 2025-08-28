@@ -6,15 +6,12 @@ import pricing3 from "../../assets/other-trades.svg";
 export default function Pricing() {
   return (
     <div>
-      {/* Press Logos */}
       <div className="justify-content-center text-center py-5">
         <img src={press} alt="Press Logos" className="img-fluid" />
       </div>
 
-      {/* Pricing Section */}
       <div className="container py-5">
         <div className="row justify-content-center align-items-start g-5">
-          {/* Text Column */}
           <div className="col-lg-5 col-md-6">
             <h3 className="text-muted mb-5">Unbeatable pricing</h3>
 
@@ -29,7 +26,6 @@ export default function Pricing() {
             </div>
           </div>
 
-          {/* Images Column */}
           <div className="col-lg-5 col-md-6 text-center">
             <div className="d-flex justify-content-center gap-4 flex-wrap">
               <img

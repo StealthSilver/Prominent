@@ -19,11 +19,16 @@ export default function Footer() {
             © 2010 - 2025, Zerodha Broking Ltd. All rights reserved.
           </p>
           <hr />
-          <div className="text-muted d-flex align-items-center gap-3">
-            <img src={x} alt="x logo" width="25px" />
-            <Facebook />
-            <Instagram />
-            <Linkedin />
+          <div className="text-muted d-flex align-items-center gap-3 ">
+            <img
+              src={x}
+              alt="x logo"
+              width="25px"
+              style={{ cursor: "pointer" }}
+            />
+            <Facebook style={{ cursor: "pointer" }} />
+            <Instagram style={{ cursor: "pointer" }} />
+            <Linkedin style={{ cursor: "pointer" }} />
           </div>
         </div>
         <div className="col text-muted ">
