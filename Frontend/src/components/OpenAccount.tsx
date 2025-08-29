@@ -10,7 +10,7 @@ export default function OpenAccount() {
         trades.
       </p>
 
-     <Button as={Link} to="/signup" variant="primary" size="lg" className="mt-4 custom-hover text-white text-decoration-none">
+     <Button as={Link as any} to="/signup" variant="primary" size="lg" className="mt-4 custom-hover text-white text-decoration-none">
   Sign up for free
 </Button>
     </div>
