@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import BuyActionWindow from "./BuyActionWindow";
 
-// ---- Define a type for context ----
 export interface GeneralContextType {
   openBuyWindow: (uid: string) => void;
   closeBuyWindow: () => void;
