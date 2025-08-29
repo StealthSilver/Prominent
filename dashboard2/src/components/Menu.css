@@ -1,0 +1,21 @@
+.profile-dropdown {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 150px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.profile-dropdown p {
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.profile-dropdown p:hover {
+  background-color: #f0f0f0;
+}

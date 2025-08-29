@@ -1,5 +1,7 @@
-import React, { useState, useContext, MouseEvent } from "react";
+import React, { useState, useContext } from "react";
+import type { MouseEvent } from "react";
 import GeneralContext from "./GeneralContext";
+import type { GeneralContextType } from "./GeneralContext";
 import { Tooltip, Grow } from "@mui/material";
 import {
   BarChartOutlined,
@@ -26,12 +28,8 @@ interface WatchListActionsProps {
   uid: string;
 }
 
-interface GeneralContextType {
-  openBuyWindow?: (uid: string) => void;
-}
-
 // ---- Component ----
-const labels = watchlist.map((subArray: Stock) => subArray.name);
+const labels = watchlist.map((stock: Stock) => stock.name);
 
 const WatchList: React.FC = () => {
   const data = {
@@ -108,7 +106,7 @@ const WatchListItem: React.FC<WatchListItemProps> = ({ stock }) => {
           {stock.isDown ? (
             <KeyboardArrowDown className="down" />
           ) : (
-            <KeyboardArrowUp className="down" />
+            <KeyboardArrowUp className="up" />
           )}
           <span className="price">{stock.price}</span>
         </div>
@@ -120,7 +118,9 @@ const WatchListItem: React.FC<WatchListItemProps> = ({ stock }) => {
 
 // ---- WatchListActions ----
 const WatchListActions: React.FC<WatchListActionsProps> = ({ uid }) => {
-  const generalContext = useContext<GeneralContextType | null>(GeneralContext);
+  const generalContext = useContext<GeneralContextType | undefined>(
+    GeneralContext
+  );
 
   const handleBuyClick = () => {
     if (generalContext?.openBuyWindow) {

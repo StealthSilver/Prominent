@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import type { MouseEvent } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/promlogo.svg";
 
 const Menu: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<number>(0);
@@ -20,7 +21,7 @@ const Menu: React.FC = () => {
 
   return (
     <div className="menu-container">
-      <img src="logo.png" alt="Logo" style={{ width: "50px" }} />
+      <img src={logo} alt="Logo" style={{ width: "40px" }} />
       <div className="menus">
         <ul>
           <li>
@@ -94,6 +95,12 @@ const Menu: React.FC = () => {
         <div className="profile" onClick={handleProfileClick}>
           <div className="avatar">ZU</div>
           <p className="username">USERID</p>
+          {isProfileDropdownOpen && (
+            <div className="profile-dropdown">
+              <p>Settings</p>
+              <p>Logout</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

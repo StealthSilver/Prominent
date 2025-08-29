@@ -62,4 +62,6 @@ DEPLOYMENT : AWS
 ---------------------------------------------------------------------------
 
 9. create the dashboard for the project 
+
 - create a new react project
+- clear the boilerplate
