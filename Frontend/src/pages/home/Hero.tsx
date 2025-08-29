@@ -1,5 +1,6 @@
 import heroImg from "../../assets/homeHero.png";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
       </p>
 
       <Button as="a" variant="primary" size="lg" className="mt-4 custom-hover">
-        Sign up for free
+          <Link to="/signup">Sign up for free</Link>
       </Button>
     </div>
   );
