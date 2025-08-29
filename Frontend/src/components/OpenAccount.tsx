@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function OpenAccount() {
   return (
@@ -10,7 +11,7 @@ export default function OpenAccount() {
       </p>
 
       <Button as="a" variant="primary" size="lg" className="mt-4 custom-hover">
-        Sign up for free
+          <Link to="/signup">Sign up for free</Link>
       </Button>
     </div>
   );
