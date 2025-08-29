@@ -56,5 +56,10 @@ DEPLOYMENT : AWS
 ---------------------------------------------------------------------------
 
 6. setting up the router 
+7. create the pricing page, support page and the about page 
+8. for the products page create pass the data as props
 
-- 
+---------------------------------------------------------------------------
+
+9. create the dashboard for the project 
+- create a new react project
