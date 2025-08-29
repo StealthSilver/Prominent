@@ -18,9 +18,9 @@ export default function Hero() {
         bonds, and more.
       </p>
 
-      <Button as="a" variant="primary" size="lg" className="mt-4 custom-hover">
-          <Link to="/signup">Sign up for free</Link>
-      </Button>
+     <Button as={Link} to="/signup" variant="primary" size="lg" className="mt-4 custom-hover text-white text-decoration-none">
+  Sign up for free
+</Button>
     </div>
   );
 }
