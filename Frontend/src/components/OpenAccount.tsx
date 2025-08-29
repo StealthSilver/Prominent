@@ -11,7 +11,7 @@ export default function OpenAccount() {
       </p>
 
       <Button as="a" variant="primary" size="lg" className="mt-4 custom-hover">
-          <Link to="/signup">Sign up for free</Link>
+          <Link to="/signup" className="text-white no-underline">Sign up for free</Link>
       </Button>
     </div>
   );
