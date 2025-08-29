@@ -17,7 +17,15 @@ export default function Signup() {
         <input type="text" placeholder="+91 - XXXXXXXXXXX" className="p-2" />
       </div>
 
-      <Button as="a" variant="primary" size="lg" className="mt-2 custom-hover">
+       <Button
+        as="a"
+        href="https://prominent-lylv.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="primary"
+        size="lg"
+        className="mt-4 custom-hover text-white text-decoration-none"
+      >
         Sign up for free
       </Button>
     </div>
