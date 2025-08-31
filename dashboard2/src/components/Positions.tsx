@@ -1,7 +1,6 @@
 import React from "react";
 import { positions } from "../data/data";
 
-// Define the type for a Position item
 interface Position {
   product: string;
   name: string;
