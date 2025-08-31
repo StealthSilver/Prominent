@@ -96,3 +96,11 @@ APIs for the live updates for stock market sata
 3. marketStack - API for International stocks 
 4. alphavantage
 5. finnhub
+
+----------------------------------------------------------------------------
+
+testing with JEST 
+
+the applciation flow is tested manually, but in the longer run automated scripts are written to tests. 
+
+writing a custom test for the landing page 
