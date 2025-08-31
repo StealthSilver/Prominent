@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const HoldingsModel_1 = __importDefault(require("./models/HoldingsModel"));
 const PositionsModel_1 = __importDefault(require("./models/PositionsModel"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
@@ -153,39 +154,61 @@ mongoose_1.default
 //     res.status(500).json({ error: "Failed to insert holdings" });
 //   }
 // });
-app.get("/addPositions", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+// inserting dummy positions data
+// app.get("/addPositions", async (req, res) => {
+//   try {
+//     let tempPositions = [
+//       {
+//         product: "CNC",
+//         name: "EVEREADY",
+//         qty: 2,
+//         avg: 316.27,
+//         price: 312.35,
+//         net: "+0.58%",
+//         day: "-1.24%",
+//         isLoss: true,
+//       },
+//       {
+//         product: "CNC",
+//         name: "JUBLFOOD",
+//         qty: 1,
+//         avg: 3124.75,
+//         price: 3082.65,
+//         net: "+10.04%",
+//         day: "-1.35%",
+//         isLoss: true,
+//       },
+//     ];
+//     await Promise.all(
+//       tempPositions.map((item) => {
+//         const newPosition = new PositionsModel(item);
+//         return newPosition.save();
+//       })
+//     );
+//     res.json({ message: "Dummy positions inserted successfully!" });
+//   } catch (error) {
+//     console.error("Error inserting positions:", error);
+//     res.status(500).json({ error: "Failed to insert positions" });
+//   }
+// });
+app.get("/allHoldings", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let tempPositions = [
-            {
-                product: "CNC",
-                name: "EVEREADY",
-                qty: 2,
-                avg: 316.27,
-                price: 312.35,
-                net: "+0.58%",
-                day: "-1.24%",
-                isLoss: true,
-            },
-            {
-                product: "CNC",
-                name: "JUBLFOOD",
-                qty: 1,
-                avg: 3124.75,
-                price: 3082.65,
-                net: "+10.04%",
-                day: "-1.35%",
-                isLoss: true,
-            },
-        ];
-        yield Promise.all(tempPositions.map((item) => {
-            const newPosition = new PositionsModel_1.default(item);
-            return newPosition.save();
-        }));
-        res.json({ message: "Dummy positions inserted successfully!" });
+        const allHoldings = yield HoldingsModel_1.default.find({});
+        res.json(allHoldings);
     }
     catch (error) {
-        console.error("Error inserting positions:", error);
-        res.status(500).json({ error: "Failed to insert positions" });
+        console.error("Error fetching holdings:", error);
+        res.status(500).json({ error: "Failed to fetch holdings" });
+    }
+}));
+app.get("/allPositions", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const allPositions = yield PositionsModel_1.default.find({});
+        res.json(allPositions);
+    }
+    catch (error) {
+        console.error("Error fetching holdings:", error);
+        res.status(500).json({ error: "Failed to fetch holdings" });
     }
 }));
 app.listen(PORT, () => {
