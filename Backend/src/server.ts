@@ -211,6 +211,18 @@ app.get("/allPositions", async (req, res) => {
   }
 });
 
+// buy - sell endpoint
+app.post("/newOrder", async (req, res) => {
+  try {
+    const { name, qty, price, mode } = req.body;
+    console.log(name, qty, price, mode);
+    res.json({ message: "Order received" });
+  } catch (error) {
+    console.error("Error receiving order:", error);
+    res.status(500).json({ error: "Failed to receive order" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

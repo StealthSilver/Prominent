@@ -17,7 +17,7 @@ const BuyActionWindow: React.FC<BuyActionWindowPropss> = ({ uid }) => {
   );
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:3002/newOrder", {
+    axios.post("http://localhost:8000/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
