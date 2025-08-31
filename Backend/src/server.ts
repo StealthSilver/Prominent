@@ -3,11 +3,15 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import HoldingsModel from "./models/HoldingsModel";
 import PositionsModel from "./models/PositionsModel";
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+app.use(bodyParser.json());
+app.use(cors());
 
 mongoose
   .connect(process.env.MONG_URI || "")

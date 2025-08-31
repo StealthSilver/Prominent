@@ -3,7 +3,6 @@ import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
 import type { ChartData } from "chart.js";
 
-// ---- Define types for each holding ----
 interface Holding {
   name: string;
   qty: number;
@@ -14,12 +13,11 @@ interface Holding {
   isLoss?: boolean;
 }
 
-// ---- Component ----
 const Holdings: React.FC = () => {
   const [allHoldings, setAllHoldings] = useState<Holding[]>([]);
 
   useEffect(() => {
-    axios.get<Holding[]>("http://localhost:3002/allHoldings").then((res) => {
+    axios.get<Holding[]>("http://localhost:8000/allHoldings").then((res) => {
       setAllHoldings(res.data);
     });
   }, []);

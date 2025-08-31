@@ -17,9 +17,13 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const HoldingsModel_1 = __importDefault(require("./models/HoldingsModel"));
 const PositionsModel_1 = __importDefault(require("./models/PositionsModel"));
+const bodyParser = require("body-parser");
+const cors = require("cors");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 8000;
+app.use(bodyParser.json());
+app.use(cors());
 mongoose_1.default
     .connect(process.env.MONG_URI || "")
     .then(() => {
