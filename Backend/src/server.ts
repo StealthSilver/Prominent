@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import HoldingsModel from "./models/HoldingsModel";
 import PositionsModel from "./models/PositionsModel";
+import OrdersModel from "./models/OrdersModel";
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -211,11 +212,17 @@ app.get("/allPositions", async (req, res) => {
   }
 });
 
-// buy - sell endpoint
+// buy endpoint
 app.post("/newOrder", async (req, res) => {
   try {
-    const { name, qty, price, mode } = req.body;
-    console.log(name, qty, price, mode);
+    let newOrder = new OrdersModel({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    });
+    newOrder.save();
+    console.log("New order received:", newOrder);
     res.json({ message: "Order received" });
   } catch (error) {
     console.error("Error receiving order:", error);

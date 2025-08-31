@@ -17,6 +17,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const HoldingsModel_1 = __importDefault(require("./models/HoldingsModel"));
 const PositionsModel_1 = __importDefault(require("./models/PositionsModel"));
+const OrdersModel_1 = __importDefault(require("./models/OrdersModel"));
 const bodyParser = require("body-parser");
 const cors = require("cors");
 dotenv_1.default.config();
@@ -213,6 +214,23 @@ app.get("/allPositions", (req, res) => __awaiter(void 0, void 0, void 0, functio
     catch (error) {
         console.error("Error fetching holdings:", error);
         res.status(500).json({ error: "Failed to fetch holdings" });
+    }
+}));
+// buy - sell endpoint
+app.post("/newOrder", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let newOrder = new OrdersModel_1.default({
+            name: req.body.name,
+            qty: req.body.qty,
+            price: req.body.price,
+            mode: req.body.mode,
+        });
+        newOrder.save();
+        res.json({ message: "Order received" });
+    }
+    catch (error) {
+        console.error("Error receiving order:", error);
+        res.status(500).json({ error: "Failed to receive order" });
     }
 }));
 app.listen(PORT, () => {
