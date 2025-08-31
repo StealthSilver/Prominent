@@ -74,3 +74,8 @@ DEPLOYMENT : AWS
 - create src/server.ts 
 - npm i express @types/express cors nodemon 
 - tsconfig, rootDir : "./src" , outDir: "./dist"
+
+11. create the schemas an models for holdings, orders and positions 
+12. create the dummy data endpoints in server.ts to add the data in the mongo 
+13. create the get endpoint for both holdings and positions for getting the data 
+14. add the buy endpoint to place new orders 
