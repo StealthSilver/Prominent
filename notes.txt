@@ -65,3 +65,12 @@ DEPLOYMENT : AWS
 
 - create a new react project
 - clear the boilerplate
+
+10. creating the backend 
+
+- Create a folder in the base repo 
+- npm init -y 
+- tsc --init 
+- create src/server.ts 
+- npm i express @types/express cors nodemon 
+- tsconfig, rootDir : "./src" , outDir: "./dist"
