@@ -114,3 +114,11 @@ writing a custom test for the landing page
     environment: "jsdom", 
     setupFiles: "./src/setupTests.ts",
 - create the setupTests.ts from the test setup
+
+----------------------------------------------------------------------------
+
+Deployment on AWS
+
+- push all the code on github and run the build script locally
+- use AWS amplify to deploy the frontend
+- use EC2 to deploy the backend
