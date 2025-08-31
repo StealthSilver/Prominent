@@ -1,27 +1,153 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import HoldingsModel from "./models/HoldingsModel";
 import PositionsModel from "./models/PositionsModel";
 import OrdersModel from "./models/OrdersModel";
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import UserModel from "./models/UserModel";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import bodyParser from "body-parser";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
+
 app.use(bodyParser.json());
 app.use(cors());
 
 mongoose
   .connect(process.env.MONG_URI || "")
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((error) => {
-    console.error("Error connecting to MongoDB:", error);
-  });
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("Error connecting to MongoDB:", error));
+
+app.post("/auth/register", async (req: Request, res: Response) => {
+  try {
+    const { username, password } = req.body;
+
+    const existingUser = await UserModel.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ error: "Username already taken" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new UserModel({ username, password: hashedPassword });
+    await newUser.save();
+
+    res.json({ message: "User registered successfully" });
+  } catch (error) {
+    console.error("Error registering user:", error);
+    res.status(500).json({ error: "Failed to register user" });
+  }
+});
+
+app.post("/auth/login", async (req: Request, res: Response) => {
+  try {
+    const { username, password } = req.body;
+
+    const user = await UserModel.findOne({ username });
+    if (!user) {
+      return res.status(400).json({ error: "Invalid credentials" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: "Invalid credentials" });
+    }
+
+    const token = jwt.sign(
+      { id: user._id, username: user.username },
+      JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    res.json({ message: "Login successful", token });
+  } catch (error) {
+    console.error("Error logging in:", error);
+    res.status(500).json({ error: "Failed to login" });
+  }
+});
+
+interface AuthRequest extends Request {
+  user?: { id: string; username: string };
+}
+
+const authMiddleware = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.headers["authorization"]?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Access denied" });
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET) as {
+      id: string;
+      username: string;
+    };
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: "Invalid or expired token" });
+  }
+};
+
+app.get(
+  "/allHoldings",
+  authMiddleware,
+  async (req: AuthRequest, res: Response) => {
+    try {
+      const allHoldings = await HoldingsModel.find({});
+      res.json(allHoldings);
+    } catch (error) {
+      console.error("Error fetching holdings:", error);
+      res.status(500).json({ error: "Failed to fetch holdings" });
+    }
+  }
+);
+
+app.get(
+  "/allPositions",
+  authMiddleware,
+  async (req: AuthRequest, res: Response) => {
+    try {
+      const allPositions = await PositionsModel.find({});
+      res.json(allPositions);
+    } catch (error) {
+      console.error("Error fetching positions:", error);
+      res.status(500).json({ error: "Failed to fetch positions" });
+    }
+  }
+);
+
+app.post(
+  "/newOrder",
+  authMiddleware,
+  async (req: AuthRequest, res: Response) => {
+    try {
+      const newOrder = new OrdersModel({
+        name: req.body.name,
+        qty: req.body.qty,
+        price: req.body.price,
+        mode: req.body.mode,
+      });
+      await newOrder.save();
+      console.log("New order received:", newOrder);
+      res.json({ message: "Order received" });
+    } catch (error) {
+      console.error("Error receiving order:", error);
+      res.status(500).json({ error: "Failed to receive order" });
+    }
+  }
+);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 // inserting dummy holdings data
 // app.get("/addHoldings", async (req, res) => {
@@ -191,45 +317,3 @@ mongoose
 //     res.status(500).json({ error: "Failed to insert positions" });
 //   }
 // });
-
-app.get("/allHoldings", async (req, res) => {
-  try {
-    const allHoldings = await HoldingsModel.find({});
-    res.json(allHoldings);
-  } catch (error) {
-    console.error("Error fetching holdings:", error);
-    res.status(500).json({ error: "Failed to fetch holdings" });
-  }
-});
-
-app.get("/allPositions", async (req, res) => {
-  try {
-    const allPositions = await PositionsModel.find({});
-    res.json(allPositions);
-  } catch (error) {
-    console.error("Error fetching holdings:", error);
-    res.status(500).json({ error: "Failed to fetch holdings" });
-  }
-});
-
-// buy endpoint
-app.post("/newOrder", async (req, res) => {
-  try {
-    let newOrder = new OrdersModel({
-      name: req.body.name,
-      qty: req.body.qty,
-      price: req.body.price,
-      mode: req.body.mode,
-    });
-    newOrder.save();
-    console.log("New order received:", newOrder);
-    res.json({ message: "Order received" });
-  } catch (error) {
-    console.error("Error receiving order:", error);
-    res.status(500).json({ error: "Failed to receive order" });
-  }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
