@@ -4,13 +4,11 @@ import type { ChartData, ChartOptions } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// ---- Types ----
 interface DoughnutChartProps {
   data: ChartData<"doughnut", number[], string>;
   options?: ChartOptions<"doughnut">;
 }
 
-// ---- Component ----
 export const DoughnutChart: React.FC<DoughnutChartProps> = ({
   data,
   options,
