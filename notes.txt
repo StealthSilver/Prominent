@@ -79,3 +79,12 @@ DEPLOYMENT : AWS
 12. create the dummy data endpoints in server.ts to add the data in the mongo 
 13. create the get endpoint for both holdings and positions for getting the data 
 14. add the buy endpoint to place new orders 
+
+----------------------------------------------------------------------------
+
+15. create the authentication
+
+https://www.freecodecamp.org/news/how-to-secure-your-mern-stack-application/
+
+
+----------------------------------------------------------------------------
