@@ -88,3 +88,11 @@ https://www.freecodecamp.org/news/how-to-secure-your-mern-stack-application/
 
 
 ----------------------------------------------------------------------------
+
+APIs for the live updates for stock market sata 
+
+1. NSE India 
+2. upstox - API for India
+3. marketStack - API for International stocks 
+4. alphavantage
+5. finnhub
