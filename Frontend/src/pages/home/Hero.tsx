@@ -7,7 +7,7 @@ export default function Hero() {
     <div className="container text-center py-5 min-vh-100">
       <img
         src={heroImg}
-        alt="Hero"
+        alt="Hero Image"
         className="img-fluid mx-auto d-block mb-5"
         style={{ maxWidth: "996px", height: "auto" }}
       />
@@ -18,9 +18,15 @@ export default function Hero() {
         bonds, and more.
       </p>
 
-     <Button as={Link as any} to="/signup" variant="primary" size="lg" className="mt-4 custom-hover text-white text-decoration-none">
-  Sign up for free
-</Button>
+      <Button
+        as={Link as any}
+        to="/signup"
+        variant="primary"
+        size="lg"
+        className="mt-4 custom-hover text-white text-decoration-none"
+      >
+        Sign up for free
+      </Button>
     </div>
   );
 }
