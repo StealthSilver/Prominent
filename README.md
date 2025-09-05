@@ -1,8 +1,8 @@
 # Prominent 🏦
 *A Modern Trading Platform*
 
-###Prominent is a **web-based stock trading platform** that allows users to explore live market data, track their portfolio, and place buy/sell orders in real time.  
-###It’s built with a focus on **speed, simplicity, and an intuitive user experience**.
+### Prominent is a **web-based stock trading platform** that allows users to explore live market data, track their portfolio, and place buy/sell orders in real time.  
+### It’s built with a focus on **speed, simplicity, and an intuitive user experience**.
 ---
 
 ## 🚀 Features
