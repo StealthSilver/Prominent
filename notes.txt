@@ -65,6 +65,106 @@ DEPLOYMENT : AWS
 
 - create a new react project
 - clear the boilerplate
+- clear the default boilerplate code
+- in App.tsx, set up the router and render the Home component as the root
+- import and render the TopBar and Dashboard components inside Home
+- ensure Home is used as the entry layout for all dashboard pages
+- create the TopBar component
+- include stock indices (e.g., NIFTY, SENSEX) as sample data
+- render the Menu component inside the TopBar
+- add container classes (topbar-container, indices-container) for styling
+- create the Menu component
+- add company logo inside the menu
+- create navigation links for:Dashboard, Orders, Holdings, Positions, Funds, Apps
+- implement selectedMenu state to highlight the active menu item
+- add a profile section with: avatar, username
+- dropdown menu with "Settings" and "Logout" options
+- use React Router’s <Link> for navigation
+- set up the routes for menu pages
+- configure react-router-dom with routes for each menu item (/orders, /holdings, /positions, /funds, /apps)
+- create placeholder components for each route inside the components folder
+- styling the dashboard
+- create a styles folder and add CSS/SCSS for TopBar, Menu, and Dashboard
+- style the selected menu with an active state
+- style the profile dropdown with hover/click interactions
+- final integration
+- test all navigation links and dropdown interactions
+- ensure Dashboard loads by default when visiting /
+- connect backend data (e.g., stock indices, holdings, funds) when APIs are ready
+- creating the Menu component
+- create a Menu component inside the components folder
+- add the company logo at the top of the sidebar
+- create navigation links for Dashboard, Orders, Holdings, Positions, Funds, and Apps
+- implement useState to track the currently selected menu item
+- style the active menu item differently using conditional classes
+- add a profile section with avatar, username, and a dropdown (Settings / Logout)
+- wrap all links with react-router-dom’s <Link> for navigation
+- creating the WatchList component
+- create a WatchList component to display all stocks in a list format
+- add a search input with a count indicator (n / 50)
+- render a list of stocks from the watchlist dataset
+- create WatchListItem for each stock showing name, price, percent change, and arrow indicators (up/down)
+- show additional WatchListActions buttons (Buy, Sell, Analytics, More) when hovering over a stock
+- use @mui/material’s Tooltip for action buttons
+- integrate DoughnutChart to visualize stock distribution
+- creating the GeneralContext
+- create a GeneralContext with React.createContext to manage app-wide actions
+- add state for opening and closing the BuyActionWindow
+- define openBuyWindow and closeBuyWindow functions inside the provider
+- wrap the entire app with GeneralContextProvider so actions can be triggered globally
+- conditionally render BuyActionWindow when a stock is selected for buying
+- creating the Summary component
+- create a Summary component to display account snapshots
+- add a greeting message (Hi, User!)
+- add an Equity section showing margin available, used margin, and opening balance
+- add a Holdings section showing P&L, current value, and investment amount
+- use dividers (<hr />) to separate sections visually
+- creating the Orders component
+- create an Orders component with a placeholder view
+- display a message when no orders are available: “You haven't placed any orders today”
+- add a call-to-action button that redirects to the dashboard (using <Link> from react-router-dom)
+- creating the Holdings component
+- create a Holdings component that fetches holdings data using axios
+- call the backend API (http://localhost:8000/allHoldings) inside useEffect
+- map over the holdings and render them inside a table with columns: Instrument, Qty., Avg. cost, LTP, Current value, P&L, Net change, Day change
+- apply conditional styling for profit/loss values
+- display portfolio totals: total investment, current value, overall P&L
+- render a bar chart using the VerticalGraph component for stock prices
+- creating the Positions component
+- create a Positions component to display open positions
+- import positions data from data/data.ts
+- render positions in a table with columns: Product, Instrument, Qty., Avg., LTP, P&L, Day change
+- calculate profit/loss dynamically based on average cost and last traded price
+- apply conditional styling for profit/loss values
+- creating the Funds component
+- create a Funds component for managing money in the account
+- display fund transfer actions (Add funds, Withdraw)
+- show an Equity section with details: Available margin, Used margin, Available cash, Opening balance, Payin, SPAN, Delivery margin, Exposure, Options premium
+- add a Collateral section showing Liquid funds, Equity, and Total Collateral
+- add a Commodity section with a message and CTA to open a commodity account
+- creating the Apps component
+- create an Apps component as a placeholder page
+- display a simple title for now: “Apps”
+- extend later to integrate with partner apps or tools
+
+
+- in the App.tsx create the router setup and render the home component
+- create the components folder and create the home.tsx
+- in home.tsx render the topbar and the dashboard component 
+- start creating the topbar.tsx 
+- the topbar contains the sidebar values and the navabr setup 
+- the sidebar values are basic and hardcoded. create the seperate menu component
+- the menu has six links and an account dropdown, create the siz link options and make the states and events for the options and the account
+- now create the dashboard.tsx, create the routing setup for the orders, holdings, positions, funds and apps components
+- also create a watchlist component and wrap it in the general context provider
+- create the summary page with basic hardcoded values
+- similarly the orders and the apps component is basic and empty for now
+- in holdings use axios to get all the holdings form the backend, return all the holdings info in a table format
+- the positions are hardcoded for now, create a table for the position values
+- the funds are hardcoded for now, create a table for the funds value
+- create the watchlist component and create the general context provider for that. 
+- th genr
+
 
 10. creating the backend 
 
